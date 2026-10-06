@@ -19,6 +19,8 @@ On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. The exit stat
 
 The sample contains a scheduling issue, an image pull failure, a crash loop and a readiness issue. All names and UIDs are fictitious.
 
+The CI installs the package and exercises offline analysis and mocked `kubectl` responses on Python 3.10, 3.12 and 3.13. It does not connect to a real cluster; live use requires validating access and results in your own sandbox.
+
 ## Inspect a real namespace
 
 First confirm the context name with `kubectl config get-contexts`. Then explicitly select it:
