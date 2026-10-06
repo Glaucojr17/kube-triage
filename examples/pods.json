@@ -1,0 +1,52 @@
+{
+  "apiVersion": "v1",
+  "kind": "PodList",
+  "items": [
+    {
+      "metadata": {"name": "checkout-7f9b", "namespace": "demo", "uid": "demo-pending"},
+      "status": {"phase": "Pending", "conditions": [{"type": "PodScheduled", "status": "False"}]}
+    },
+    {
+      "metadata": {"name": "api-5c64", "namespace": "demo", "uid": "demo-crash"},
+      "status": {
+        "phase": "Running",
+        "containerStatuses": [{
+          "name": "api", "ready": false, "restartCount": 6,
+          "state": {"waiting": {"reason": "CrashLoopBackOff"}},
+          "lastState": {"terminated": {"reason": "OOMKilled"}}
+        }]
+      }
+    },
+    {
+      "metadata": {"name": "worker-814a", "namespace": "demo", "uid": "demo-image"},
+      "status": {
+        "phase": "Pending",
+        "containerStatuses": [{
+          "name": "worker", "ready": false, "restartCount": 0,
+          "state": {"waiting": {"reason": "ImagePullBackOff"}}
+        }]
+      }
+    },
+    {
+      "metadata": {"name": "frontend-245e", "namespace": "demo", "uid": "demo-ready"},
+      "status": {
+        "phase": "Running",
+        "containerStatuses": [{
+          "name": "frontend", "ready": false, "restartCount": 0,
+          "state": {"running": {"startedAt": "2026-01-01T00:00:00Z"}}
+        }],
+        "conditions": [{"type": "Ready", "status": "False"}]
+      }
+    },
+    {
+      "metadata": {"name": "healthy-7d8c", "namespace": "demo", "uid": "demo-healthy"},
+      "status": {
+        "phase": "Running",
+        "containerStatuses": [{
+          "name": "app", "ready": true, "restartCount": 0,
+          "state": {"running": {"startedAt": "2026-01-01T00:00:00Z"}}
+        }]
+      }
+    }
+  ]
+}
